@@ -1,6 +1,7 @@
 name: strong-frida build
 
 on:
+  workflow_dispatch:
   push:
     paths:
     - VERSION
@@ -8,7 +9,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-20.04
-    if: github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch'
 
     outputs:
       frida_version: ${{ steps.fridaVersion.outputs.frida_version }}
